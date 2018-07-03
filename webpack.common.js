@@ -9,22 +9,8 @@ module.exports = {
         // login: './src/script/login.js'
     },
     output: {
-        filename: '[name]-[hash].js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
-    },
-    devtool: "eval-source-map",
-    devServer:{
-        contentBase: path.join(__dirname, "dist"),//提供内容的目录
-        compress:true,//启用压缩
-        port:8085,//服务器端口
-        hot:true,//模块热替换特性
-        //lazy:true,//只有在请求是才编译
-        proxy: {
-            "/opsRegionHealth": {
-                target: "http://10.254.188.54:8080"
-              }
-          },
-        //process  查看进度 只能显示在控制台
     },
     module: {
         rules: [
@@ -38,9 +24,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist']),//清空dist文件夹
         new HtmlWebpackPlugin({
-            title: 'Output Management',
             filename: 'index.html',
             template: './src/index.html'
         })

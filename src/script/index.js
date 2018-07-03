@@ -11,5 +11,5 @@ function component() {
   }
   
   document.body.appendChild(component());
-  const a = 13;
+  const a = 15;
   console.log(a)
