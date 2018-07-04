@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import $ from "jquery";
 import '../stylesheet/index.css';
-import './login.js';
+import http from './http.js';
 function component() {
     var element = document.createElement('div');
   
@@ -11,5 +12,20 @@ function component() {
   }
   
   document.body.appendChild(component());
-  const a = 15;
+  const a = 16;
   console.log(a)
+  const b = 17;
+  console.log(b)
+  http.get('/posts', {
+    params: {
+        userId: 2
+    }
+}).then(res => {
+    console.log(res.data);
+})
+document.getElementById("button").onclick = function(){
+    import ('./asyns.js').then(res=>{
+        res.default();
+    })
+}
+$("h1").css("color","red");
